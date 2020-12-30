@@ -1,0 +1,55 @@
+<style>
+  :host {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #000000;
+    color: white;
+    font-weight: 600;
+  }
+
+  .toolbar img {
+    margin: 0 16px;
+  }
+
+  .toolbar #dropdown-logo {
+    height: 50px;
+    margin: 0 16px;
+  }
+
+  .toolbar #dropdown-logo:hover {
+    opacity: 0.8;
+  }
+
+</style>
+
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <img
+    width="40"
+    alt="Word Logo"
+    src="../assets/LogoImg.PNG"
+  />
+  <span>Word of the Day</span>
+    <div class="spacer"></div>
+    <input type="image" width="50" alt="Dropdown Img" src="../assets/dropdownMenu.png" id="dropdown-logo"/>
+</div>
+
+<router-outlet></router-outlet>
