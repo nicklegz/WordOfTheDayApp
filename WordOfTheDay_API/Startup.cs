@@ -13,6 +13,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WordOfTheDay_API.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace WordOfTheDay_API
 {
@@ -28,9 +30,16 @@ namespace WordOfTheDay_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<WordOfTheDayContext>(opt => opt.UseSqlServer(@"Data Source=LEGZ-PC\LEGZSQLSERVER;Initial Catalog=WordOfTheDay;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
+            services.AddDbContext<WordOfTheDayContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                var resolver = options.SerializerSettings.ContractResolver;
+                if (resolver != null)
+                    (resolver as DefaultContractResolver).NamingStrategy = null;
+
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WordOfTheDay_API", Version = "v1" });
