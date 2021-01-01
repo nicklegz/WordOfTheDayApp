@@ -41,9 +41,10 @@ export class WordService {
     }
 
 
-  getWords() {
+  getWords(): Observable<Word[]> {
     let reqHeaders = new HttpHeaders().set('Accept', 'application/json');
-    return this.http.get(this.apiURL,{headers: reqHeaders}).pipe(catchError(this.handleError));
+    return this.http.get<Word[]>(this.apiURL,{headers: reqHeaders})
+    .pipe(catchError(this.handleError));
   }
 }
 

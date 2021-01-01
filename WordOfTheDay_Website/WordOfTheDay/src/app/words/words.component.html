@@ -1,9 +1,7 @@
 
-<h2>{{words}}</h2>
-<div *ngIf="words?.length">
 <ul class="words">
   <li *ngFor="let word of words">
-    <span class="badge"></span>
+    <span class="badge">{{word}}</span>
   </li>
 </ul>
 
@@ -12,6 +10,5 @@
   <button class="clear"
       (click)="messageService.clear()">clear</button>
 
-</div>
 </div>
 
