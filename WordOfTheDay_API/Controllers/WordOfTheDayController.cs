@@ -22,7 +22,8 @@ namespace WordOfTheDay_API.Controllers
             _context = context;
         }
 
-        // GET: api/wordoftheday
+        // GET: api/newwords
+        //returns list of new words
         [HttpGet]
         [Route("api/newwords")]
         [Produces("application/json")]
@@ -33,7 +34,6 @@ namespace WordOfTheDay_API.Controllers
 
         //GET: api/wordoftheday
         //returns a single random word of the day
-
         [HttpGet]
         [Route("api/wordoftheday")]
         [Produces("application/json")]
@@ -41,6 +41,9 @@ namespace WordOfTheDay_API.Controllers
         {
             var words = await _context.Words.Where(x => x.NumberTimesUsed == _context.Words.Min(x => x.NumberTimesUsed)).ToListAsync();
             var word = words.ElementAt(random.Next(0, words.Count()));
+            word.NumberTimesUsed = word.NumberTimesUsed + 1;
+            await _context.SaveChangesAsync();
+
             return word;
         }
 

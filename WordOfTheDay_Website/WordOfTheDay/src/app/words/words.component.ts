@@ -10,9 +10,10 @@ import { MessageService } from '../services/message.service';
 })
 export class WordsComponent implements OnInit {
 
-  words!: Word[];
+  words?: Word;
 
-  constructor(private wordService: WordService, public messageService: MessageService) { }
+  constructor(private wordService: WordService, public messageService: MessageService) {
+  }
 
   ngOnInit():  void{
     this.getWords();

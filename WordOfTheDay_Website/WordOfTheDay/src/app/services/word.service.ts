@@ -4,14 +4,13 @@ import { Observable, of, throwError } from 'rxjs';
 import {MessageService} from './message.service';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
-import { WORDS } from '../words/mock-words';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WordService {
 
-  private apiURL = 'https://localhost:44364/api/WordOfTheDay';
+  private apiURL = 'https://localhost:44364/api/wordoftheday';
 
 
   /*call Get Word of the day endpoint
@@ -41,9 +40,9 @@ export class WordService {
     }
 
 
-  getWords(): Observable<Word[]> {
+  getWords(): Observable<Word> {
     let reqHeaders = new HttpHeaders().set('Accept', 'application/json');
-    return this.http.get<Word[]>(this.apiURL,{headers: reqHeaders}).pipe(catchError(this.handleError));
+    return this.http.get<Word>(this.apiURL,{headers: reqHeaders}).pipe(catchError(this.handleError));
   }
 }
 

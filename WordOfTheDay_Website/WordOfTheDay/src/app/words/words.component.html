@@ -1,9 +1,4 @@
-
-<ul class="words">
-  <li *ngFor="let word of words">
-    <span class="badge">{{word.Word}}</span>
-  </li>
-</ul>
+<h3>{{words?.Word}}</h3>
 
 <div *ngIf="messageService.messages.length">
   <div *ngFor="let message of messageService.messages">{{message}}</div>

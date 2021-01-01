@@ -12,7 +12,6 @@ namespace WordOfTheDay_API.Models
             : base(options)
         {
         }
-
         public DbSet<WordOfTheDay> Words { get; set; }
     }
 }
