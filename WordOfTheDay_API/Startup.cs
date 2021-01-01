@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using WordOfTheDay_API.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Microsoft.AspNetCore.Http.Features;
 
 namespace WordOfTheDay_API
 {
@@ -31,6 +32,8 @@ namespace WordOfTheDay_API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<WordOfTheDayContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+
+            services.AddCors();
 
             services.AddControllers().AddNewtonsoftJson(options =>
             {
@@ -49,6 +52,8 @@ namespace WordOfTheDay_API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -61,6 +66,11 @@ namespace WordOfTheDay_API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(builder => builder
+                 .AllowAnyOrigin()
+                 .AllowAnyMethod()
+                 .AllowAnyHeader());
 
             app.UseAuthorization();
 

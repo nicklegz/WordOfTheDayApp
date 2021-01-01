@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { WORDS } from './mock-words';
-import { Word } from './word'
+import { Word } from '../interfaces/word.model'
+import {WordService} from '../services/word.service'
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-words',
@@ -9,10 +11,17 @@ import { Word } from './word'
 })
 export class WordsComponent implements OnInit {
 
-  words = WORDS;
+  words: any;
 
-  constructor() { }
+  getWords(): void{
+    this.wordService.getWords().subscribe((words) => {
+      this.words = words
+    });
+  }
+
+  constructor(private wordService: WordService, public messageService: MessageService) { }
 
   ngOnInit():  void{
+    this.getWords();
   }
 }

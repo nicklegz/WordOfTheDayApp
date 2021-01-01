@@ -1,6 +1,17 @@
-<h2>Words</h2>
+
+<h2>{{words}}</h2>
+<div *ngIf="words?.length">
 <ul class="words">
   <li *ngFor="let word of words">
-    <span class="badge">{{word.word}}</span>
+    <span class="badge"></span>
   </li>
 </ul>
+
+<div *ngIf="messageService.messages.length">
+  <div *ngFor="let message of messageService.messages">{{message}}</div>
+  <button class="clear"
+      (click)="messageService.clear()">clear</button>
+
+</div>
+</div>
+

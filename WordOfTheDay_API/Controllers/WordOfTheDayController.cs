@@ -9,6 +9,7 @@ using WordOfTheDay_API.Models;
 
 namespace WordOfTheDay_API.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class WordOfTheDayController : ControllerBase
