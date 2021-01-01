@@ -24,6 +24,7 @@ namespace WordOfTheDay_API.Controllers
 
         // GET: api/WordOfTheDay
         [HttpGet]
+        [Produces("application/json")]
         public async Task<ActionResult<IEnumerable<WordOfTheDay>>> GetWords()
         {
             int min = GetNewWords().Min(x => x.NumberTimesUsed);

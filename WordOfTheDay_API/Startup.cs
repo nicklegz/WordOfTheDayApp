@@ -33,7 +33,15 @@ namespace WordOfTheDay_API
         {
             services.AddDbContext<WordOfTheDayContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
 
-            services.AddCors();
+            
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
+            
 
             services.AddControllers().AddNewtonsoftJson(options =>
             {
@@ -67,10 +75,7 @@ namespace WordOfTheDay_API
 
             app.UseRouting();
 
-            app.UseCors(builder => builder
-                 .AllowAnyOrigin()
-                 .AllowAnyMethod()
-                 .AllowAnyHeader());
+            app.UseCors("CorsPolicy");
 
             app.UseAuthorization();
 

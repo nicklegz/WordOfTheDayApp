@@ -11,7 +11,7 @@ import { WORDS } from '../words/mock-words';
 })
 export class WordService {
 
-  private apiURL = 'https://localhost:5001/api/WordOfTheDay';
+  private apiURL = 'https://localhost:44364/api/WordOfTheDay';
 
 
   /*call Get Word of the day endpoint
