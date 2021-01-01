@@ -10,7 +10,7 @@ import { MessageService } from '../services/message.service';
 })
 export class WordsComponent implements OnInit {
 
-  words: Word[] | undefined;
+  words!: Word[];
 
   constructor(private wordService: WordService, public messageService: MessageService) { }
 
@@ -19,8 +19,7 @@ export class WordsComponent implements OnInit {
   }
 
   getWords(): void{
-    this.wordService.getWords().subscribe((words) => {
-      this.words = words
-    });
+    this.wordService.getWords().subscribe(words => this.words = words)
+    };
   }
-}
+
