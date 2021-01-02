@@ -1,3 +1,4 @@
+<div class="banner">
   <nav class="navbar navbar-dark">
     <!-- Brand -->
     <a class="navbar-brand" href="#" id="brand"><h1>{{title}}</h1></a>
@@ -23,12 +24,18 @@
     </div>
   </nav>
 
-        <div class="card text-center bg-light">
-          <div class="card-body"><span>Hello there how are you<app-words></app-words></span>
-        </div>
+<div class="container-fluid">
+  <div class="row">
+    <!--Column 1-->
+    <div class="col column-one text-center"></div>
+    <!--Column 2-->
+    <div class="col column-two">
+      <div class="card text-center">
+        <!--Calls the words component-->
+        <app-words></app-words>
+      </div>
+    </div>
+    <!--Column 3-->
+      <div class="col column-three text-center"></div>
+    </div>
 </div>
-
-
-
-
-

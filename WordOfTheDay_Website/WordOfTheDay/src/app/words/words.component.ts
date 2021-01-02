@@ -11,16 +11,19 @@ import { MessageService } from '../services/message.service';
 export class WordsComponent implements OnInit {
 
   words?: Word;
+  day = new Date();
 
   constructor(private wordService: WordService, public messageService: MessageService) {
   }
 
   ngOnInit():  void{
-    this.getWords();
+
+      this.getWordOfTheDay();
+
   }
 
-  getWords(): void{
-    this.wordService.getWords().subscribe(words => this.words = words)
+  getWordOfTheDay(): void{
+    this.wordService.getWordOfTheDay().subscribe(words => this.words = words)
     };
   }
 

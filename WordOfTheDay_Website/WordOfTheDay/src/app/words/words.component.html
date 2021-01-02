@@ -1,12 +1,11 @@
 
-<div class="card-header">{{words?.Word}}</div>
-<div class="card-body">{{words?.Definition}}</div>
-<div class="card-footer">{{words?.Type}}</div>
+<div class="card-text"><h1>{{words?.Word}}</h1></div>
+<div class="card-text"><h5><i>{{words?.Definition}}</i></h5></div>
+<div class="card-text"><i>{{words?.Type}}</i></div>
 
 <div *ngIf="messageService.messages.length">
   <div *ngFor="let message of messageService.messages">{{message}}</div>
   <button class="clear"
       (click)="messageService.clear()">clear</button>
-
 </div>
 

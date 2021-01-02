@@ -15,7 +15,7 @@ namespace WordOfTheDay_API.Controllers
     [ApiController]
     public class WordOfTheDayController : ControllerBase
     {
-        private static Random random = new Random();
+        private static readonly Random random = new Random();
         private readonly WordOfTheDayContext _context;
         public WordOfTheDayController(WordOfTheDayContext context)
         {
