@@ -1,0 +1,26 @@
+.navbar a
+{
+  color:white;
+  text-decoration: none;
+}
+.navbar{
+
+  color:white;
+  background-color: rgb(225, 173, 1);
+}
+
+.navbar span{
+  color: white;
+  text-decoration: none;
+}
+
+.card{
+  margin-top: 15%;
+  margin-right: 30%;
+  margin-left: 30%;
+  overflow:hidden;
+  border-color: rgb(225, 173, 1);;
+  color: rgb(225, 173, 1);
+  overflow: auto;
+  font-size: xxx-large;
+}

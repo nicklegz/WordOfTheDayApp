@@ -1,4 +1,7 @@
-<h3>{{words?.Word}}</h3>
+
+<div class="card-header">{{words?.Word}}</div>
+<div class="card-body">{{words?.Definition}}</div>
+<div class="card-footer">{{words?.Type}}</div>
 
 <div *ngIf="messageService.messages.length">
   <div *ngFor="let message of messageService.messages">{{message}}</div>
